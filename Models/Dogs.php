@@ -163,12 +163,72 @@ class Dogs {
      $resulta = $sqlpre->prepare($sql);
      
      $resulta->execute();
-   
+     
      return ($resulta);
      
    }
    
+  public function readDogsId(){
+       
+     $pdo = new Conexao();
+     
+     $sqlpre = $pdo->conectar();
+     
+     $sql = "SELECT * FROM dogs WHERE id = :id LIMIT 1" ;
+     
+     $resulta = $sqlpre->prepare($sql);
+     
+     $resulta->bindParam (':id', $this->id);
+     
+     $resulta->execute();
+     
+     $retorno = $resulta->fetch(PDO::FETCH_ASSOC);
+     
+     // $this->id = $retorno['id'];
+     
+     $this->nome = $retorno['nome'];
+     $this->cidade  = $retorno['cidade'];
+     $this->datanascto = $retorno['datanascto'];
+     $this->idade = $retorno['idade'];
+     $this->pelo = $retorno['pelo'];
+     $this->cor = $retorno['cor'];
+     $this->proprietario = $retorno['proprietario'];
+     $this->sexo = $retorno['sexo'];
+     $this->raca = $retorno['raca'];
+     $this->datacadastro = $retorno['datacadastro'];
+     $this->foto = $retorno['foto'];
+     $this->registro = $retorno['registro'];
+             
+         
+     return ($resulta);
+     
+   } 
    
+   
+   public function deletar(){
+       
+     $pdo = new Conexao();
+     
+     $sqlpre = $pdo->conectar();
+     
+     $sql = "DELETE FROM dogs WHERE id = :id " ;
+     
+     $resulta = $sqlpre->prepare($sql);
+     
+     $resulta->bindParam (':id', $this->id);
+    
+    IF( $resulta->execute()){
+        
+        return (TRUE); 
+        
+    }
+    else 
+    {
+        return (FALSE);
+    }
+      
+       
+   }
     
 }
 
