@@ -143,7 +143,7 @@ class Dogs {
           
    // Metodos  ---------------------------------------
     
-   public function criarRegitro(){
+   public function criarRegistro(){
        
        $this->registro = time() + 1;
    }
@@ -228,6 +228,40 @@ class Dogs {
     }
       
        
+   }
+   
+   
+   
+   public function createcadastro(){
+       
+     $pdo = new Conexao();
+     
+     $sqlpre = $pdo->conectar();
+         
+     $sql = "INSERT INTO dogs ( nome, registro, cidade, idade, raca, sexo, cor, pelo, foto, proprietario) "
+             . "values "
+             . "( :nome, :registro, :cidade, :idade, :raca, :sexo, :cor, :pelo, :foto, :proprietario  )";
+         
+       
+     $resulta = $sqlpre->prepare($sql);
+       
+      
+      $resulta->bindvalue (':nome', $this->nome);
+      $resulta->bindvalue (':registro', $this->registro);
+      $resulta->bindvalue (':cidade', $this->cidade);
+      $resulta->bindvalue (':idade', $this->idade);
+      $resulta->bindvalue (':raca', $this->raca);
+      $resulta->bindvalue (':sexo', $this->sexo);
+      $resulta->bindvalue (':cor', $this->cor);
+      $resulta->bindvalue (':pelo', $this->pelo);
+      $resulta->bindvalue (':foto', $this->foto);
+      $resulta->bindvalue (':proprietario', $this->proprietario);
+      
+                 
+      return($resulta->execute());
+      
+           
+    
    }
     
 }
