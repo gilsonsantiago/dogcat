@@ -4,6 +4,8 @@ header('HTTP: 1.0');
 
 header("Access-Control-Allow-Origin: *");
 header('Content-type: application/json');
+// header("Access-Control-Allow-Methods: UPDATE");
+
 
 //  header("Access-Control-Allow-Headers: *");
 
@@ -15,10 +17,10 @@ $dados = json_decode(file_get_contents('php://input'));
 
 $dog =  new dogs();
 
-$dog->criarRegistro();
 
+$dog->setId($dados->id);
 $dog->setNome($dados->nome);
-$dog->setRegistro($dog->getRegistro());
+$dog->setRegistro($dados->registro);
 $dog->setCidade($dados->cidade);
 $dog->setIdade($dados->idade);
 $dog->setRaca($dados->raca);
@@ -30,14 +32,14 @@ $dog->setProprietario($dados->proprietario);
 $dog->setDatanascto($dados->datanascto);
 
 
-if ($dog->createcadastro()){
+if ($dog->updateAtualizar()){
     
-    echo json_encode(['message:', 'Cadastrado com sucesso']);
+    echo json_encode(['message:', 'Atualizado com sucesso']);
     
 }
  else
 {
     
-     echo json_encode(['message:', 'Erro ao gravar']);
+     echo json_encode(['message:', 'Erro ao Atualizar']);
      
  }

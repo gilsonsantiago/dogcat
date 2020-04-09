@@ -238,9 +238,9 @@ class Dogs {
      
      $sqlpre = $pdo->conectar();
          
-     $sql = "INSERT INTO dogs ( nome, registro, cidade, idade, raca, sexo, cor, pelo, foto, proprietario) "
+     $sql = "INSERT INTO dogs ( nome, registro, cidade, idade, raca, sexo, cor, pelo, foto, proprietario, datanascto) "
              . "values "
-             . "( :nome, :registro, :cidade, :idade, :raca, :sexo, :cor, :pelo, :foto, :proprietario  )";
+             . "( :nome, :registro, :cidade, :idade, :raca, :sexo, :cor, :pelo, :foto, :proprietario , :datanascto )";
          
        
      $resulta = $sqlpre->prepare($sql);
@@ -255,6 +255,9 @@ class Dogs {
       $resulta->bindvalue (':cor', $this->cor);
       $resulta->bindvalue (':pelo', $this->pelo);
       $resulta->bindvalue (':foto', $this->foto);
+      $resulta->bindvalue (':datanascto', $this->datanascto);
+              
+              
       $resulta->bindvalue (':proprietario', $this->proprietario);
       
                  
@@ -263,6 +266,54 @@ class Dogs {
            
     
    }
+   
+   
+    
+   
+   public function updateAtualizar(){
+       
+     $pdo = new Conexao();
+     
+     $sqlpre = $pdo->conectar();
+         
+     
+     $sql = "UPDATE dogs SET  nome = :nome,"
+             . " registro = :registro , "
+             . "cidade = :cidade, "
+             . "idade = :idade, "
+             . "raca = :raca, "
+             . "sexo = :sexo, "
+             . "cor = :cor, "
+             . "pelo = :pelo, "
+             . "foto = :foto, "
+             . "proprietario = :proprietario "
+             . "WHERE id = :id" ;
+         
+       
+     $resulta = $sqlpre->prepare($sql);
+      
+      $resulta->bindValue(':id', $this->id);
+   
+          
+      $resulta->bindvalue (':nome', $this->nome);
+      $resulta->bindvalue (':registro', $this->registro);
+      $resulta->bindvalue (':cidade', $this->cidade);
+      $resulta->bindvalue (':idade', $this->idade);
+      $resulta->bindvalue (':raca', $this->raca);
+      $resulta->bindvalue (':sexo', $this->sexo);
+      $resulta->bindvalue (':cor', $this->cor);
+      $resulta->bindvalue (':pelo', $this->pelo);
+      $resulta->bindvalue (':foto', $this->foto);
+      $resulta->bindvalue (':proprietario', $this->proprietario);
+      
+                   
+      return($resulta->execute());
+           
+    
+   }
+   
+   
+   
     
 }
 
