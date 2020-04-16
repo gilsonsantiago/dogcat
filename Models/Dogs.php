@@ -178,6 +178,9 @@ class Dogs {
      
      $resulta = $sqlpre->prepare($sql);
      
+     $this->id = htmlspecialchars(strip_tags($this->id));
+     
+     
      $resulta->bindParam (':id', $this->id);
      
      $resulta->execute();
@@ -215,19 +218,12 @@ class Dogs {
      
      $resulta = $sqlpre->prepare($sql);
      
+     $this->id = htmlspecialchars(strip_tags($this->id));
+     
      $resulta->bindParam (':id', $this->id);
-    
-    IF( $resulta->execute()){
-        
-        return (TRUE); 
-        
-    }
-    else 
-    {
-        return (FALSE);
-    }
-      
-       
+     
+     return ($resulta->execute());
+          
    }
    
    
@@ -244,8 +240,7 @@ class Dogs {
          
        
      $resulta = $sqlpre->prepare($sql);
-      
-     
+    
      
      $this->nome = htmlspecialchars(strip_tags($this->nome));
      $this->cidade = htmlspecialchars(strip_tags($this->cidade));

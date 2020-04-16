@@ -45,6 +45,7 @@ if ($retorno->rowCount() > 0) {
     );
 
     echo json_encode($itens);
+    
 } else {
 
     echo json_encode(['message', 'Registro não encontrado']);
