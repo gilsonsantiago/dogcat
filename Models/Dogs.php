@@ -234,9 +234,31 @@ class Dogs {
      
      $sqlpre = $pdo->conectar();
          
-     $sql = "INSERT INTO dogs ( nome, registro, cidade, idade, raca, sexo, cor, pelo, foto, proprietario, datanascto) "
-             . "values "
-             . "( :nome, :registro, :cidade, :idade, :raca, :sexo, :cor, :pelo, :foto, :proprietario , :datanascto )";
+     $sql = "INSERT INTO "
+             . "dogs ( "
+             . "nome, "
+             . "registro, "
+             . "cidade, "
+             . "idade, "
+             . "raca, "
+             . "sexo, "
+             . "cor, "
+             . "pelo, "
+             . "foto, "
+             . "proprietario, "
+             . "datanascto) "
+         . "VALUES ( "
+             . ":nome, "
+             . ":registro, "
+             . ":cidade, "
+             . ":idade, "
+             . ":raca, "
+             . ":sexo, "
+             . ":cor, "
+             . ":pelo, "
+             . ":foto, "
+             . ":proprietario , "
+             . ":datanascto )";
          
        
      $resulta = $sqlpre->prepare($sql);
@@ -282,7 +304,8 @@ class Dogs {
      $sqlpre = $pdo->conectar();
          
      
-     $sql = "UPDATE dogs SET  nome = :nome,"
+     $sql = "UPDATE dogs "
+             . "SET  nome = :nome,"
              . " registro = :registro , "
              . "cidade = :cidade, "
              . "idade = :idade, "
@@ -292,7 +315,7 @@ class Dogs {
              . "pelo = :pelo, "
              . "foto = :foto, "
              . "proprietario = :proprietario "
-             . "WHERE id = :id" ;
+          . "WHERE id = :id" ;
          
        
      $resulta = $sqlpre->prepare($sql);
