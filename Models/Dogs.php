@@ -244,7 +244,17 @@ class Dogs {
          
        
      $resulta = $sqlpre->prepare($sql);
-       
+      
+     
+     
+     $this->nome = htmlspecialchars(strip_tags($this->nome));
+     $this->cidade = htmlspecialchars(strip_tags($this->cidade));
+     $this->idade = htmlspecialchars(strip_tags($this->idade));
+     $this->raca = htmlspecialchars(strip_tags($this->raca));
+     $this->sexo = htmlspecialchars(strip_tags($this->sexo));
+     $this->cor = htmlspecialchars(strip_tags($this->cor));
+     $this->pelo = htmlspecialchars(strip_tags($this->pelo));
+     
       
       $resulta->bindvalue (':nome', $this->nome);
       $resulta->bindvalue (':registro', $this->registro);

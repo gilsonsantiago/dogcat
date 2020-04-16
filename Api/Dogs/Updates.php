@@ -17,7 +17,6 @@ $dados = json_decode(file_get_contents('php://input'));
 
 $dog =  new dogs();
 
-
 $dog->setId($dados->id);
 $dog->setNome($dados->nome);
 $dog->setRegistro($dados->registro);
@@ -32,7 +31,8 @@ $dog->setProprietario($dados->proprietario);
 $dog->setDatanascto($dados->datanascto);
 
 
-if ($dog->updateAtualizar()){
+if ($dog->updateAtualizar())
+{
     
     echo json_encode(['message:', 'Atualizado com sucesso']);
     
